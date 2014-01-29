@@ -58,6 +58,8 @@ FileContextMenuExt::FileContextMenuExt(void) : m_cRef(1),
     // the bitmap must not be greater than 8bpp.
     m_hMenuBmp = LoadImage(g_hInst, MAKEINTRESOURCE(IDB_OK), 
         IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE | LR_LOADTRANSPARENT);
+
+	m_CFileData = new CFileData();
 }
 
 FileContextMenuExt::~FileContextMenuExt(void)
@@ -68,30 +70,15 @@ FileContextMenuExt::~FileContextMenuExt(void)
         m_hMenuBmp = NULL;
     }
 
+	delete m_CFileData;
+
     InterlockedDecrement(&g_cDllRef);
 }
 
 
 void FileContextMenuExt::OnVerbDisplayFileName(HWND hWnd)
 {
-	std::wfstream file;
-	file.open("C:/log.txt", std::ios::out);
-
-	if (file)
-	{
-		for (std::list<wchar_t *>::iterator it = m_listOfSelectedFiles.begin(); it != m_listOfSelectedFiles.end(); ++it)
-		{
-			wchar_t szMessage[300];
-
-			if (SUCCEEDED(StringCchPrintf(szMessage, ARRAYSIZE(szMessage),
-				L"\r%s", *it)))
-			{
-				file << szMessage <<"\n";
-			}
-		}
-	}
-
-	file.close();
+	m_CFileData->printInLog();
 }
 
 
@@ -132,28 +119,6 @@ IFACEMETHODIMP_(ULONG) FileContextMenuExt::Release()
 
 #pragma region IShellExtInit
 
-//Sorting names
-bool compare_nocase(const std::wstring& first, const std::wstring& second)
-{
-	UINT i = 0;
-	while ((i<first.length()) && (i<second.length()))
-	{
-		if (tolower(first[i])<tolower(second[i]))
-		{
-			return true;
-		}
-		else if (tolower(first[i])>tolower(second[i]))
-		{
-			return false;
-		}
-		
-		++i;
-	}
-	
-	return (first.length() < second.length());
-}
-
-
 // Initialize the context menu handler.
 IFACEMETHODIMP FileContextMenuExt::Initialize(
     LPCITEMIDLIST pidlFolder, LPDATAOBJECT pDataObj, HKEY hKeyProgID)
@@ -184,25 +149,18 @@ IFACEMETHODIMP FileContextMenuExt::Initialize(
             
             if (nFiles >= 1)
 			{
-				// Get the path of the selected files.
+				wchar_t someFileName[MAX_PATH];
+
+				// add to list selected files.
 				for (UINT i = 0; i < nFiles; ++i)
 				{
-					wchar_t *someFileName = new wchar_t[MAX_PATH];
 					DragQueryFile(hDrop, i, someFileName, MAX_PATH);
 					
-					//cat file name path
-					std::wstring* filename = new std::wstring[1];
-					for (UINT i = 0; i < MAX_PATH; ++i)
-					{
-						filename[0] += someFileName[i];
-					}
-
-					someFileName = PathFindFileName(filename[0].c_str());
-					m_listOfSelectedFiles.push_back(someFileName);
+					m_CFileData->addNewFile(someFileName);
 				}		
 
 				//sort list of files
-				m_listOfSelectedFiles.sort(compare_nocase);
+				m_CFileData->sortByTitle();
 
 				hr = S_OK;
 			}

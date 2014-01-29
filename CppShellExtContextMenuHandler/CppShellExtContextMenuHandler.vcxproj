@@ -160,12 +160,14 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CFileData.h" />
     <ClInclude Include="ClassFactory.h" />
     <ClInclude Include="FileContextMenuExt.h" />
     <ClInclude Include="Reg.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CFileData.cpp" />
     <ClCompile Include="ClassFactory.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>

@@ -30,9 +30,9 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 #pragma once
 
 #include <windows.h>
-#include <list>
 #include <shlobj.h>     // For IShellExtInit and IContextMenu
 
+#include "CFileData.h"
 
 class FileContextMenuExt : public IShellExtInit, public IContextMenu
 {
@@ -59,8 +59,8 @@ private:
     // Reference count of component.
     long m_cRef;
 
-    // The name of the selected file.
-	std::list<wchar_t *> m_listOfSelectedFiles;
+	//class for all stuff with task
+	CFileData* m_CFileData;
 
     // The method that handles the "display" verb.
     void OnVerbDisplayFileName(HWND hWnd);

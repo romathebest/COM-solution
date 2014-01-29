@@ -1,18 +1,18 @@
-﻿Сборка начата 29.01.2014 11:38:27.
+﻿Сборка начата 29.01.2014 11:45:52.
      1>Проект "C:\C++\CppShellExtContextMenuHandler\CppShellExtContextMenuHandler.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D CPPSHELLEXTCONTEXTMENUHANDLER_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt CFileData.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D CPPSHELLEXTCONTEXTMENUHANDLER_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt CFileData.cpp ClassFactory.cpp FileContextMenuExt.cpp
          CFileData.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\C++\x64\Debug\CppShellExtContextMenuHandler.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"GlobalExportFunctions.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\C++\x64\Debug\CppShellExtContextMenuHandler.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\C++\x64\Debug\CppShellExtContextMenuHandler.lib" /MACHINE:X64 /DLL x64\Debug\CppShellExtContextMenuHandler.res
-         x64\Debug\CFileData.obj
-         x64\Debug\ClassFactory.obj
-         x64\Debug\dllmain.obj
-         x64\Debug\FileContextMenuExt.obj
-         x64\Debug\Reg.obj
-         CppShellExtContextMenuHandler.vcxproj -> C:\C++\x64\Debug\CppShellExtContextMenuHandler.dll
-     1>Сборка проекта "C:\C++\CppShellExtContextMenuHandler\CppShellExtContextMenuHandler.vcxproj" завершена (целевые объекты Build).
+         Создание кода...
+         Компиляция...
+         ClassFactory.cpp
+     1>ClassFactory.cpp : fatal error C1041: невозможно открыть базу данных программы c:\c++\cppshellextcontextmenuhandler\x64\debug\vc120.pdb; если несколько файлов CL.EXE осуществляют запись в один и тот же PDB-файл, воспользуйтесь /FS
+         Создание кода...
+         Компиляция...
+         FileContextMenuExt.cpp
+         Создание кода...
+     1>Сборка проекта "C:\C++\CppShellExtContextMenuHandler\CppShellExtContextMenuHandler.vcxproj" завершена (целевые объекты Build) с ошибкой.
 
-Сборка успешно завершена.
+Ошибка сборки.
 
-Затраченное время: 00:00:02.54
+Затраченное время: 00:00:04.26

@@ -165,7 +165,7 @@ STDAPI DllUnregisterServer(void)
     if (SUCCEEDED(hr))
     {
         // Unregister the context menu handler.
-        hr = UnregisterShellExtContextMenuHandler(L".", 
+        hr = UnregisterShellExtContextMenuHandler(L"*", 
             CLSID_FileContextMenuExt);
     }
 
